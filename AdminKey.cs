@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Oxide.Plugins
 {
-    [Info("Admin Key", "birthdates", "1.2.3")]
+    [Info("Admin Key", "birthdates", "1.2.4")]
     [Description("Get admin from just a key!")]
     public class AdminKey : RustPlugin
     {
@@ -38,10 +38,10 @@ namespace Oxide.Plugins
         void AddAdmin(BasePlayer player)
         {
             // Begin edits by Death
-            player.SetPlayerFlag(BasePlayer.PlayerFlags.IsAdmin, true); // Forces player flag isAdmin to true without having to relog
-            player.Connection.authLevel = 2; // Forces player's auth level without having to relog. 1 = admin 2 = owner
+            player.SetPlayerFlag(BasePlayer.PlayerFlags.IsAdmin, true);
+            player.Connection.authLevel = 2;
             ServerUsers.Set(player.userID, ServerUsers.UserGroup.Owner, player.displayName, "Owner from admin key"); //edit by birthdates to set group in cfg
-            ServerUsers.Save(); // Direct way of saving users CFG without running a console command.
+            ServerUsers.Save();
         }
 
         public void AdminKeyCommand(BasePlayer player, string command, string[] args)
