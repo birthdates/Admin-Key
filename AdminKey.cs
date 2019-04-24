@@ -62,13 +62,20 @@ namespace Oxide.Plugins
                     if (player.IsAdmin)
                     {
                         if(!(bool)Interface.CallHook("CanRemoveAdmin", player)) {
+                            //TODO add msg
                             return;
                         }
                         RemoveAdmin(player);
+                        Interface.CallHook("OnAdminRemoved", player);
                         SendReply(player, lang.GetMessage("AdminRemoved", this, player.UserIDString));
                         return;
                     }
+                    if(!(bool)Interface.CallHook("CanAddAdmin", player)) {
+                        //TODO add msg
+                        return;
+                    }
                     AddAdmin(player);
+                    Interface.CallHook("OnAdminAdded", player);
                     SendReply(player, lang.GetMessage("AdminGiven", this, player.UserIDString));
                 }
 
