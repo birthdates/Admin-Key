@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Oxide.Plugins
 {
     [Info("Admin Key", "birthdates", "1.2.4")]
-    [Description("Get admin from just a key!")]
+    [Description("Get admin from a key code instead of going into console")]
     public class AdminKey : RustPlugin
     {
 
