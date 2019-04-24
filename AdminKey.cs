@@ -61,6 +61,9 @@ namespace Oxide.Plugins
                 {
                     if (player.IsAdmin)
                     {
+                        if(!(bool)Interface.CallHook("CanRemoveAdmin", player)) {
+                            return;
+                        }
                         RemoveAdmin(player);
                         SendReply(player, lang.GetMessage("AdminRemoved", this, player.UserIDString));
                         return;
