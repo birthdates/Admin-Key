@@ -64,7 +64,6 @@ namespace Oxide.Plugins
                     {
                         if (Interface.CallHook("CanRemoveAdmin", player) != null)
                         {
-                            //TODO add msg
                             return;
                         }
                         RemoveAdmin(player);
@@ -74,7 +73,6 @@ namespace Oxide.Plugins
                     }
                     if (Interface.CallHook("CanAddAdmin", player) != null)
                     {
-                        //TODO add msg
                         return;
                     }
                     AddAdmin(player);
@@ -92,7 +90,7 @@ namespace Oxide.Plugins
                 {"InvalidKey", "Invalid key!"},
                 {"AdminGiven", "Success! You are now in the admin group!"},
                 {"AlreadyAdmin", "You are already an admin"},
-                {"AdminRemoved", "Success! You have been removed from the admin group!"}
+                {"AdminRemoved", "Success! You have been removed from the admin group!"},
             }, this);
         }
 
