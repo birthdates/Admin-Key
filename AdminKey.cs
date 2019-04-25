@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Oxide.Core;
 using System.Collections.Generic;
 
 namespace Oxide.Plugins
@@ -61,7 +62,8 @@ namespace Oxide.Plugins
                 {
                     if (player.IsAdmin)
                     {
-                        if(!(bool)Interface.CallHook("CanRemoveAdmin", player)) {
+                        if (Interface.CallHook("CanRemoveAdmin", player) != null)
+                        {
                             //TODO add msg
                             return;
                         }
@@ -70,7 +72,8 @@ namespace Oxide.Plugins
                         SendReply(player, lang.GetMessage("AdminRemoved", this, player.UserIDString));
                         return;
                     }
-                    if(!(bool)Interface.CallHook("CanAddAdmin", player)) {
+                    if (Interface.CallHook("CanAddAdmin", player) != null)
+                    {
                         //TODO add msg
                         return;
                     }
