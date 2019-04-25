@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Oxide.Core;
 using System.Collections.Generic;
 
 namespace Oxide.Plugins
 {
-    [Info("Admin Key", "birthdates", "1.2.4")]
+    [Info("Admin Key", "birthdates", "1.2.5")]
     [Description("Get admin from a key code instead of going into console")]
     public class AdminKey : RustPlugin
     {
@@ -61,11 +62,21 @@ namespace Oxide.Plugins
                 {
                     if (player.IsAdmin)
                     {
+                        if (Interface.CallHook("CanRemoveAdmin", player) != null)
+                        {
+                            return;
+                        }
                         RemoveAdmin(player);
+                        Interface.CallHook("OnAdminRemoved", player);
                         SendReply(player, lang.GetMessage("AdminRemoved", this, player.UserIDString));
                         return;
                     }
+                    if (Interface.CallHook("CanAddAdmin", player) != null)
+                    {
+                        return;
+                    }
                     AddAdmin(player);
+                    Interface.CallHook("OnAdminAdded", player);
                     SendReply(player, lang.GetMessage("AdminGiven", this, player.UserIDString));
                 }
 
@@ -79,7 +90,7 @@ namespace Oxide.Plugins
                 {"InvalidKey", "Invalid key!"},
                 {"AdminGiven", "Success! You are now in the admin group!"},
                 {"AlreadyAdmin", "You are already an admin"},
-                {"AdminRemoved", "Success! You have been removed from the admin group!"}
+                {"AdminRemoved", "Success! You have been removed from the admin group!"},
             }, this);
         }
 
