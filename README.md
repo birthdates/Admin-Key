@@ -13,9 +13,13 @@ Get admin from a key code instead of going into console
 ## Developers
 
 The developer API has been added:
+
 `object CanRemoveAdmin(BasePlayer Player)`
+
 `object CanAddAdmin(BasePlayer Player)`
+
 `void OnAdminAdded(BasePlayer Player)`
+
 `void OnAdminRemoved(BasePlayer Player)`
 
 Example:
