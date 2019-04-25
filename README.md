@@ -36,7 +36,6 @@ Example:
 private const permission_addadmin = "example.addadmin";
 
 object CanAddAdmin(BasePlayer Player) {
-  if(!permission.UserHasPermission(Player.UserIDString, permission_addadmin)) return false;
-  return null;
+  return permission.UserHasPermission(Player.UserIDString, permission_addadmin);
 }
 ```
