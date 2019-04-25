@@ -33,7 +33,7 @@ void OnAdminRemoved(BasePlayer Player)
 Example:
 
 ```csharp
-private const permission_addadmin = "example.addadmin";
+private const string permission_addadmin = "example.addadmin";
 
 object CanAddAdmin(BasePlayer Player) {
   return permission.UserHasPermission(Player.UserIDString, permission_addadmin);
